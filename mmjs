@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (nameInput.value.trim() === '') {
             alert('Please enter your full name.');
             event.preventDefault(); // Prevent form submission
-            return;
+            return; 
         }
 
         if (emailInput.value.trim() === '') {
