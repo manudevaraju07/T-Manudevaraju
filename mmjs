@@ -1,151 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(event) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const eventSelect = document.getElementById('event');
+
+        // Basic validation for required fields
+        if (nameInput.value.trim() === '') {
+            alert('Please enter your full name.');
+            event.preventDefault(); // Prevent form submission
+            return;
         }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            max-width: 90%;
+
+        if (emailInput.value.trim() === '') {
+            alert('Please enter your email address.');
+            event.preventDefault(); // Prevent form submission
+            return;
         }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+
+        // Basic email format validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailInput.value.trim())) {
+            alert('Please enter a valid email address.');
+            event.preventDefault(); // Prevent form submission
+            return;
         }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
+
+        if (eventSelect.value === '') {
+            alert('Please select an event.');
+            event.preventDefault(); // Prevent form submission
+            return;
         }
-        input[type="text"], input[type="email"], select {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .error-message {
-            color: red;
-            font-size: 0.9em;
-            margin-top: -15px;
-            margin-bottom: 10px;
-            display: none; /* Hidden by default */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Event Registration</h2>
-        <form id="registrationForm" action="submit_registration.php" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
-            <div id="nameError" class="error-message">Please enter your full name.</div>
 
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
-            <div id="emailError" class="error-message">Please enter a valid email address.</div>
-
-            <label for="event">Select Event:</label>
-            <select id="event" name="event" required>
-                <option value="">-- Please choose an event --</option>
-                <option value="classical">CLASSICAL</option>
-                <option value="regional">REGIONAL</option>
-                <option value="pop">POPt</option>
-                <option value="rap">RAP</option>
-            </select>
-            <div id="eventError" class="error-message">Please select an event.</div>
-
-            <button type="submit">Register</button>
-        </form>
-    </div>
-
-    <script>
-        const form = document.getElementById('registrationForm');
-
-        form.addEventListener('submit', function(event) {
-            let isValid = true;
-
-            // Validate Full Name
-            const nameInput = document.getElementById('name');
-            const nameError = document.getElementById('nameError');
-            if (nameInput.value.trim() === '') {
-                nameError.style.display = 'block';
-                isValid = false;
-            } else {
-                nameError.style.display = 'none';
-            }
-
-            // Validate Email Address
-            const emailInput = document.getElementById('email');
-            const emailError = document.getElementById('emailError');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(emailInput.value.trim())) {
-                emailError.style.display = 'block';
-                isValid = false;
-            } else {
-                emailError.style.display = 'none';
-            }
-
-            // Validate Event Selection
-            const eventSelect = document.getElementById('event');
-            const eventError = document.getElementById('eventError');
-            if (eventSelect.value === '') {
-                eventError.style.display = 'block';
-                isValid = false;
-            } else {
-                eventError.style.display = 'none';
-            }
-
-            if (!isValid) {
-                event.preventDefault(); // Prevent form submission if validation fails
-            } else {
-                // Optionally, you can perform an AJAX submission here instead of a full page reload
-                // For example:
-                // fetch(form.action, {
-                //     method: form.method,
-                //     body: new FormData(form)
-                // })
-                // .then(response => response.text())
-                // .then(data => {
-                //     alert('Registration successful!');
-                //     console.log(data);
-                // })
-                // .catch(error => {
-                //     console.error('Error:', error);
-                // });
-                // event.preventDefault(); // Prevent default submission if using AJAX
-            }
-        });
-    </script>
-</body>
-</html>
+        // If all validations pass, the form will submit normally.
+        // You could add an AJAX submission here if you don't want a full page reload.
+        // For this example, we're letting the form submit to 'submit_registration.php'.
+        // alert('Registration successful!'); // Optional: show success message before submission
+    });
+});
