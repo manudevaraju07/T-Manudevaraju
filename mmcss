@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif; /* Sets the default font */
+  background-color: #f4f4f4; /* Light grey background */
+  display: flex; /* Uses flexbox for layout */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  min-height: 100vh; /* Ensures body takes full viewport height */
+  margin: 0; /* Removes default body margin */
+}
+
+.container {
+  background-color: #fff; /* White background for the form container */
+  padding: 30px; /* Padding inside the container */
+  border-radius: 8px; /* Slightly rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 400px; /* Fixed width for the container */
+  max-width: 90%; /* Ensures responsiveness on smaller screens */
+}
+
+h2 {
+  text-align: center; /* Centers the heading text */
+  color: #333; /* Dark grey color for the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+label {
+  display: block; /* Makes labels take full width */
+  margin-bottom: 8px; /* Space below labels */
+  font-weight: bold; /* Bold text for labels */
+  color: #555; /* Medium grey color for labels */
+}
+
+input[type="text"],
+input[type="email"],
+select {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 10px; /* Padding inside input fields and select */
+  margin-bottom: 20px; /* Space below input fields and select */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 4px; /* Slightly rounded corners for inputs */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+button {
+  background-color: #007bff; /* Blue background for the button */
+  color: white; /* White text for the button */
+  padding: 12px 20px; /* Padding inside the button */
+  border: none; /* No border for the button */
+  border-radius: 4px; /* Slightly rounded corners for the button */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  width: 100%; /* Full width for the button */
+  font-size: 16px; /* Font size for the button text */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on button hover */
+}
