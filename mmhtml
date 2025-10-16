@@ -71,13 +71,13 @@
             <label for="event">Select Event:</label>
             <select id="event" name="event" required>
                 <option value="">-- Please choose an event --</option>
-                <option value="tech_conference">Tech Conference 2025</option>
-                <option value="web_dev_workshop">Web Development Workshop</option>
-                <option value="data_science_summit">Data Science Summit</option>
-                <option value="ux_design_masterclass">UX Design Masterclass</option>
+                <option value="classical">CLASSICAL</option>
+                <option value="regional">REGIONAL</option>
+                <option value="pop">POPt</option>
+                <option value="rap">RAP</option>
             </select>
 
-            <button type="submit">Register</button>
+                        <button type="submit">Register</button>
         </form>
     </div>
 </body>
